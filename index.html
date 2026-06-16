@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chandeshwari Arts | Digital Flex & Sublimation Printing Simara</title>
+  <meta name="description" content="Chandeshwari Arts (चण्डेश्वरी डिजिटल & फ्लेक्स प्रिन्ट) – High-quality flex printing, digital photo frames, sublimation lanyards, T-shirts, stamps, and videography in Simara, Nepal. Fast turnaround and fair pricing.">
+  <link rel="icon" type="image/png" href="logo.png">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <!-- Global SVG Defs for Gradients -->
+  <svg style="width:0;height:0;position:absolute;" aria-hidden="true">
+    <defs>
+      <linearGradient id="pink-orange-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#ec319a" />
+        <stop offset="50%" stop-color="#ff5e5b" />
+        <stop offset="100%" stop-color="#fdb302" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- TOAST NOTIFICATIONS DRAWER -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="#home" class="logo-link" id="nav-logo">
+        <img src="logo.png" class="logo-img" alt="Chandeshwari Arts Logo">
+        <div class="logo-text">
+          <span class="logo-title">Chandeshwari Arts</span>
+          <span class="logo-subtitle">Digital & Flex Print</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#home" class="nav-link active" id="link-home">Home</a></li>
+          <li><a href="#products" class="nav-link" id="link-products">Products</a></li>
+          <li><a href="#id-form" class="nav-link" id="link-id-form">ID Card Portal</a></li>
+          <li><a href="#photos" class="nav-link" id="link-photos">Track Order</a></li>
+          <li><a href="#about" class="nav-link" id="link-about">About Us</a></li>
+          <li><a href="#contact" class="nav-link" id="link-contact">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <!-- Navigation Actions -->
+      <div class="nav-actions">
+        <!-- Light/Dark Mode Switcher -->
+        <button class="theme-btn" onclick="toggleTheme()" id="btn-theme-toggle" aria-label="Toggle Theme">
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+
+        <!-- Cart Button -->
+        <button class="cart-btn" onclick="openCart()" id="btn-cart" aria-label="View Cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span class="cart-btn-text">Cart</span> <span class="cart-count" id="nav-cart-count" style="display: none;">0</span>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="menu-toggle" aria-label="Toggle Mobile Menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- DRAWER BACKGROUND OVERLAY -->
+  <div id="drawer-overlay" class="drawer-overlay" onclick="closeCart(); closeCheckout();"></div>
+
+  <!-- CART SLIDE-OUT DRAWER -->
+  <div id="cart-drawer" class="drawer" aria-labelledby="cart-title">
+    <div class="drawer-header">
+      <h3 id="cart-title" class="drawer-title">Shopping Cart</h3>
+      <button class="drawer-close" onclick="closeCart()" aria-label="Close Cart">&times;</button>
+    </div>
+    <div class="drawer-content">
+      <div id="cart-items-list" class="cart-items-list">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+    <div id="cart-footer" class="drawer-footer">
+      <div class="cart-subtotal-row">
+        <span class="subtotal-label">Subtotal:</span>
+        <span id="cart-subtotal-value" class="subtotal-value">NPR 0</span>
+      </div>
+      <button class="btn btn-primary" onclick="openCheckout()" style="width: 100%; justify-content: center;" id="btn-checkout">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- CHECKOUT DRAWER -->
+  <div id="checkout-drawer" class="drawer" aria-labelledby="checkout-title">
+    <div class="drawer-header">
+      <h3 id="checkout-title" class="drawer-title">Delivery Details</h3>
+      <button class="drawer-close" onclick="closeCheckout()" aria-label="Close Checkout">&times;</button>
+    </div>
+    <div class="drawer-content">
+      <!-- Checkout Form -->
+      <form id="checkout-form" onsubmit="handleCheckoutSubmit(event)">
+        <div class="form-group">
+          <label for="checkout-name" class="form-label">Full Name *</label>
+          <input type="text" id="checkout-name" class="form-input" placeholder="e.g. Sujal Shrestha" required>
+        </div>
+        <div class="form-group">
+          <label for="checkout-phone" class="form-label">Phone Number / WhatsApp *</label>
+          <input type="tel" id="checkout-phone" class="form-input" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+        </div>
+        <div class="form-group">
+          <label for="checkout-city" class="form-label">City *</label>
+          <input type="text" id="checkout-city" class="form-input" placeholder="e.g. Simara, Kathmandu, Hetauda" required>
+        </div>
+        <div class="form-group">
+          <label for="checkout-address" class="form-label">Street Address *</label>
+          <input type="text" id="checkout-address" class="form-input" placeholder="e.g. Pipara - 4, Main Road" required>
+        </div>
+        <div class="form-group">
+          <label for="checkout-notes" class="form-label">Order Notes (Optional)</label>
+          <textarea id="checkout-notes" class="form-input" placeholder="e.g. Frame preferences, custom texts, etc."></textarea>
+        </div>
+        
+        <!-- Summary Section -->
+        <div style="background: var(--bg-tertiary); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); margin: 24px 0 20px 0;">
+          <h4 style="font-size: 0.9rem; margin-bottom: 12px; border-bottom: 1px solid var(--glass-border); padding-bottom: 8px;">Order Summary</h4>
+          <div id="checkout-summary-list">
+            <!-- Rendered by JS -->
+          </div>
+          <div style="display: flex; justify-content: space-between; font-weight: 700; margin-top: 12px; border-top: 1px dashed var(--border-color); padding-top: 10px;">
+            <span>Total:</span>
+            <span id="checkout-total-val" style="color: var(--red-light);">NPR 0</span>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-red" style="width: 100%; justify-content: center;" id="btn-submit-order">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          Place Order via WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- PRODUCT DETAIL MODAL -->
+  <div id="product-detail-modal" class="modal-overlay" onclick="if(event.target === this) closeProductDetail();">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeProductDetail()" aria-label="Close Details">&times;</button>
+      
+      <div class="detail-grid">
+        <!-- Images Column -->
+        <div class="detail-image-sec">
+          <div class="detail-main-img-box">
+            <img src="" id="detail-main-img" class="detail-main-img" alt="Product Image">
+          </div>
+          <div id="detail-thumbs-box" class="detail-thumbs-box">
+            <!-- Thumbs generated by JS -->
+          </div>
+        </div>
+
+        <!-- Info Column -->
+        <div class="detail-info-sec">
+          <div id="detail-category" class="detail-category">Category</div>
+          <h2 id="detail-name" class="detail-name">Product Name</h2>
+          <div id="detail-price" class="detail-price">NPR 00</div>
+          
+          <p id="detail-desc" class="detail-desc">Detailed product description.</p>
+          
+          <!-- Variants option -->
+          <div id="detail-variants-wrapper" class="detail-options-wrapper" style="display: none;">
+            <div class="options-title">Select Size / Variant</div>
+            <div id="detail-variants-grid" class="variants-grid">
+              <!-- Variants buttons by JS -->
+            </div>
+          </div>
+
+          <!-- Quantity Selection -->
+          <div class="qty-wrapper">
+            <span class="options-title" style="margin-bottom: 0;">Quantity</span>
+            <div class="qty-control">
+              <button class="qty-btn" onclick="adjustDetailQty(-1)" aria-label="Decrease Quantity">-</button>
+              <input type="text" id="detail-qty-input" class="qty-input" value="1" readonly>
+              <button class="qty-btn" onclick="adjustDetailQty(1)" aria-label="Increase Quantity">+</button>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="detail-actions">
+            <button class="btn btn-primary" onclick="addToCart()" id="btn-add-to-cart">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main>
+    
+    <!-- 1. HOME SECTION -->
+    <section id="home-sec" class="active">
+      <!-- Hero Section -->
+      <div class="hero-section hero-section-rebrand">
+        <div class="container hero-container-centered">
+          <div class="hero-badge-row">
+            <span class="hero-pill-badge">Fast • Affordable • Professional</span>
+          </div>
+          <h1 class="hero-title-centered">
+            Prints that set the quality standard at<br>
+            <span class="unbeatable-wrap">
+              unbeatable prices.
+              <svg class="circle-svg" viewBox="0 0 500 150" preserveAspectRatio="none">
+                <path d="M15,85 C110,20 390,20 485,65 C485,110 360,135 160,135 C60,135 12,110 15,85 Z" fill="none" stroke="url(#pink-orange-grad)" stroke-width="5" />
+              </svg>
+            </span>
+          </h1>
+          <div class="we-print-row">
+            <span class="we-print-label">WE PRINT</span>
+            <h2 class="we-print-highlight">
+              <span class="we-print-bar">|</span> <span class="we-print-carousel-container"><span id="hero-carousel-text">SUBLIMATION T-SHIRT</span></span>
+            </h2>
+          </div>
+          <div class="hero-actions-centered">
+            <a href="#products" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 20h20M5 17V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v12"/></svg>
+              Explore Products
+            </a>
+            <a href="#id-form" class="btn btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              ID Card Portal
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Banner -->
+      <div class="stats-bar">
+        <div class="container stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">10k+</div>
+            <div class="stat-label">Happy Clients</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Bulk Product Types</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">24hr</div>
+            <div class="stat-label">Fast Delivery Option</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Quality Guaranteed</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why Chandeshwari Arts Section -->
+      <div class="why-chandeshwari-section">
+        <div class="container">
+          <div class="why-card">
+            <h2 class="why-heading">चाँदेश्वरी आर्ट्स नै किन?</h2>
+            <p class="why-paragraph">
+              तपाईंको समयसीमा र बजेट हाम्रो <span class="custom-underline underline-black">प्राथमिकता</span> हो। त्यसैले हामी छरितो सेवा, प्रतिस्पर्धी मूल्य, र <span class="custom-underline underline-mixed">उच्च-गुणस्तरको</span> प्रिन्ट उत्पादन सुनिश्चित गर्छौं— जसले तपाईंलाई बिना तनाव आफ्ना <span class="custom-underline underline-red-bold">कामहरू सहज रूपमा</span> अगाडि बढाउन मद्दत गर्छ।
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Products Section -->
+      <div class="featured-products-section section-padding">
+        <div class="container">
+          <div class="section-title-wrapper-left">
+            <h2 class="section-title-featured">Featured Products</h2>
+            <p class="section-desc-featured">
+              Our most <span class="text-underline-grey">ordered</span> products, trusted by <span class="text-underline-pink">businesses</span> for speed, quality, and fair pricing.
+            </p>
+          </div>
+
+          <!-- Slider Container -->
+          <div class="slider-wrapper">
+            <div class="featured-slider" id="featured-slider">
+              
+              <!-- Card 1: ID Card -->
+              <div class="featured-card card-id-red" onclick="openProductDetail('69afdb5f9b7699e7919059f6')">
+                <span class="card-badge-top">ID CARD</span>
+                <div class="card-img-box">
+                  <img src="https://res.cloudinary.com/dm32whbjq/image/upload/v1773132637/products/ofljrtnevm1vzigis31i.jpg" alt="ID Card Red" loading="lazy">
+                </div>
+                <div class="card-arrow-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="19" x2="19" y2="5"></line><polyline points="12 5 19 5 19 12"></polyline></svg>
+                </div>
+              </div>
+
+              <!-- Card 2: Lanyard Dori -->
+              <div class="featured-card card-lanyard-yellow" onclick="openProductDetail('69afe23a9b7699e791905a2d')">
+                <span class="card-badge-top">LANYARD DORI</span>
+                <div class="card-img-box">
+                  <img src="https://res.cloudinary.com/dm32whbjq/image/upload/v1773134392/products/sjee4xyfcfcbqg5rsy6a.jpg" alt="Lanyard Dori Yellow" loading="lazy">
+                </div>
+                <div class="card-arrow-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="19" x2="19" y2="5"></line><polyline points="12 5 19 5 19 12"></polyline></svg>
+                </div>
+              </div>
+
+              <!-- Card 3: ID Card Blue -->
+              <div class="featured-card card-id-blue" onclick="openProductDetail('69b0f57a64f0d82906d90caf')">
+                <span class="card-badge-top">ID CARD</span>
+                <div class="card-img-box">
+                  <img src="https://res.cloudinary.com/dm32whbjq/image/upload/v1773204857/products/nnoq22ob9ksc4pcjpc7h.jpg" alt="ID Card Blue" loading="lazy">
+                </div>
+                <div class="card-arrow-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="19" x2="19" y2="5"></line><polyline points="12 5 19 5 19 12"></polyline></svg>
+                </div>
+              </div>
+
+              <!-- Card 4: Lanyard Keyring -->
+              <div class="featured-card card-keyring-grey" onclick="openProductDetail('69afd88c9b7699e7919059c0')">
+                <div class="card-text-content">
+                  <h3 class="card-title-text">Lanyard Keyring</h3>
+                  <p class="card-desc-text">Keep your keys handy with our 16mm & 20mm lanyard keyrings, practical for everyday use.</p>
+                </div>
+                <div class="card-arrow-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="19" x2="19" y2="5"></line><polyline points="12 5 19 5 19 12"></polyline></svg>
+                </div>
+              </div>
+
+              <!-- Card 5: Button Pin Badge -->
+              <div class="featured-card card-badge-blue" onclick="openProductDetail('69afda279b7699e7919059ea')">
+                <div class="card-text-content">
+                  <h3 class="card-title-text">Button Pin Badge</h3>
+                  <p class="card-desc-text">Customizable 44mm & 58mm pin badges, ideal for events, promotions, and gifts.</p>
+                </div>
+                <div class="card-arrow-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="19" x2="19" y2="5"></line><polyline points="12 5 19 5 19 12"></polyline></svg>
+                </div>
+              </div>
+
+              <!-- Card 6: Wholesale Lanyard -->
+              <div class="featured-card card-wholesale-red" onclick="openProductDetail('69afe3019b7699e791905a39')">
+                <div class="card-text-content">
+                  <h3 class="card-title-text">Wholesale Lanyard</h3>
+                  <p class="card-desc-text">Bulk lanyard supply for schools, offices, or events, combining style and functionality.</p>
+                </div>
+                <div class="card-arrow-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="19" x2="19" y2="5"></line><polyline points="12 5 19 5 19 12"></polyline></svg>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Bottom Action -->
+          <div class="featured-bottom-action">
+            <a href="#products" class="btn btn-explore-all">Explore All Products ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. PRODUCTS CATALOG SECTION -->
+    <section id="products-sec" class="section-padding">
+      <div class="container">
+        <div class="section-title-wrapper">
+          <span class="section-subtitle">Our Catalog</span>
+          <h2 class="section-title">Customizable Products</h2>
+          <p class="section-desc">From lanyards and acrylic cards to traditional frames and branded apparel. Select a category and discover real quality work.</p>
+        </div>
+
+        <!-- Controls (Filters + Search) -->
+        <div class="products-controls">
+          <div class="categories-pills">
+            <button class="category-pill active" onclick="selectCategory('all', this)">All Products</button>
+            <button class="category-pill" onclick="selectCategory('Frames', this)">Frames</button>
+            <button class="category-pill" onclick="selectCategory('T-Shirts', this)">Apparel/T-Shirts</button>
+            <button class="category-pill" onclick="selectCategory('Holder', this)">ID Holders</button>
+            <button class="category-pill" onclick="selectCategory('Badges', this)">Badges</button>
+            <button class="category-pill" onclick="selectCategory('ID Cards', this)">ID Cards</button>
+            <button class="category-pill" onclick="selectCategory('Sublimation', this)">Sublimation</button>
+            <button class="category-pill" onclick="selectCategory('Accessories', this)">Raw Accessories</button>
+            <button class="category-pill" onclick="selectCategory('Home Decor', this)">Home Decor</button>
+          </div>
+
+          <div class="search-box">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" class="search-input" placeholder="Search products..." oninput="handleSearch(event)">
+          </div>
+        </div>
+
+        <!-- Grid Container -->
+        <div id="products-grid" class="grid-layout">
+          <!-- Populated by index.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ID CARD PORTAL SECTION -->
+    <section id="id-form-sec" class="section-padding">
+      <div class="container id-portal-container">
+        <div class="section-title-wrapper">
+          <span class="section-subtitle">Online Services</span>
+          <h2 class="section-title">ID Card Printing Portal</h2>
+          <p class="section-desc">Submit student lists or staff details directly to our design desk. Choose your portal below to start registration.</p>
+        </div>
+
+        <!-- Tab switches -->
+        <div class="id-tabs">
+          <button class="id-tab-btn active" onclick="switchIdTab('student', this)" id="tab-student">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+            School Student Card
+          </button>
+          <button class="id-tab-btn" onclick="switchIdTab('staff', this)" id="tab-staff">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+            Office / School Staff Card
+          </button>
+        </div>
+
+        <!-- A. STUDENT FORM CARD -->
+        <div id="student-form-card" class="form-card active">
+          <div style="display: flex; gap: 12px; margin-bottom: 30px;">
+            <button class="btn btn-primary" onclick="toggleStudentMode('guest')" id="student-mode-guest">I'm a Student (Individual)</button>
+            <button class="btn btn-secondary" onclick="toggleStudentMode('bulk')" id="student-mode-bulk">We are a School (Bulk Entries)</button>
+          </div>
+
+          <!-- INDIVIDUAL GUEST FORM -->
+          <div id="student-guest-fields">
+            <h3 style="font-size: 1.25rem; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">Applying as Individual Student</h3>
+            <form id="student-guest-form" onsubmit="handleGuestStudentSubmit(event)">
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="student-guest-school">School / College Name *</label>
+                  <input type="text" id="student-guest-school" class="form-input" placeholder="e.g. Simara Secondary School" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="student-guest-name">Student Full Name *</label>
+                  <input type="text" id="student-guest-name" class="form-input" placeholder="e.g. Sujal Shrestha" required>
+                </div>
+              </div>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="student-guest-class">Class *</label>
+                  <input type="text" id="student-guest-class" class="form-input" placeholder="e.g. 10 or Bachelor 1st Year" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="student-guest-roll">Roll No (Optional)</label>
+                  <input type="text" id="student-guest-roll" class="form-input" placeholder="e.g. 12">
+                </div>
+              </div>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="student-guest-section">Section (Optional)</label>
+                  <input type="text" id="student-guest-section" class="form-input" placeholder="e.g. A">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="student-guest-blood">Blood Group</label>
+                  <select id="student-guest-blood" class="form-input">
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="Unknown">Unknown</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="student-guest-contact">Parent / Student Mobile No *</label>
+                  <input type="tel" id="student-guest-contact" class="form-input" placeholder="10-digit number" pattern="[0-9]{10}" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="student-guest-address">Address *</label>
+                  <input type="text" id="student-guest-address" class="form-input" placeholder="e.g. Simara - 4, Bara" required>
+                </div>
+              </div>
+
+              <!-- Single Photo Upload Area -->
+              <div class="form-group" style="margin-top: 15px;">
+                <label class="form-label">Upload Passport Size Photo (White or Blue background preferred) *</label>
+                <div class="upload-container" onclick="triggerStudentPhotoUpload()">
+                  <div id="student-upload-inner" style="display: flex; flex-direction: column; align-items: center;">
+                    <div class="upload-icon">📷</div>
+                    <span class="upload-text">Drag and drop or Click to upload</span>
+                    <span class="upload-sub">Supports PNG, JPG, JPEG (Max 5MB)</span>
+                  </div>
+                  <div id="student-preview-frame" class="upload-preview-frame">
+                    <img id="student-preview-img" class="upload-preview-img" alt="Photo Preview">
+                  </div>
+                </div>
+                <input type="file" id="student-photo-input" class="hidden-file-input" accept="image/*" onchange="handleStudentPhotoSelect(event)">
+              </div>
+
+              <div style="margin-top: 30px; display: flex; justify-content: flex-end;">
+                <button type="submit" class="btn btn-red" id="btn-submit-guest">Submit Application</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- BULK SCHOOL IMPORT -->
+          <div id="student-bulk-fields" style="display: none;">
+            <h3 style="font-size: 1.25rem; margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">Submit School Batch</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 24px;">Add student details one-by-one or import them in bulk from an Excel/CSV template.</p>
+            
+            <!-- Details Buffer form -->
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label" for="student-school">School Name *</label>
+                <input type="text" id="student-school" class="form-input" placeholder="e.g. Simara Public School">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="student-name">Student Full Name *</label>
+                <input type="text" id="student-name" class="form-input" placeholder="e.g. Sujal Shrestha">
+              </div>
+            </div>
+            
+            <div class="form-grid-4">
+              <div class="form-group">
+                <label class="form-label" for="student-class">Class *</label>
+                <input type="text" id="student-class" class="form-input" placeholder="10">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="student-roll">Roll No</label>
+                <input type="text" id="student-roll" class="form-input" placeholder="12">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="student-section">Section</label>
+                <input type="text" id="student-section" class="form-input" placeholder="A">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="student-blood">Blood</label>
+                <select id="student-blood" class="form-input">
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                  <option value="Unknown">Unknown</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label" for="student-father">Father's Name</label>
+                <input type="text" id="student-father" class="form-input" placeholder="Father's name">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="student-mother">Mother's Name</label>
+                <input type="text" id="student-mother" class="form-input" placeholder="Mother's name">
+              </div>
+            </div>
+
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label class="form-label" for="student-contact">Contact Number *</label>
+                <input type="tel" id="student-contact" class="form-input" placeholder="10-digit Parent contact">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="student-address">Address *</label>
+                <input type="text" id="student-address" class="form-input" placeholder="Simara">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="student-dob">Date of Birth</label>
+                <input type="date" id="student-dob" class="form-input">
+              </div>
+            </div>
+
+            <div style="margin: 20px 0 30px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+              <button class="btn btn-secondary" onclick="addStudentToBatch()" id="btn-add-batch">Add Student to Batch</button>
+              
+              <div style="display: flex; gap: 12px; align-items: center;">
+                <span style="font-size: 0.85rem; color: var(--text-muted);">or</span>
+                <a href="students-sample.csv" download class="excel-import-btn" style="text-decoration: none;">Download CSV Sample</a>
+                <button class="excel-import-btn" onclick="document.getElementById('csv-file-input').click()">Import CSV</button>
+                <input type="file" id="csv-file-input" class="hidden-file-input" accept=".csv" onchange="handleCsvImport(event)">
+              </div>
+            </div>
+
+            <!-- Batch representation -->
+            <div class="batch-section">
+              <div class="batch-header-row">
+                <h4 class="batch-title">Batch Records Summary</h4>
+                <div style="font-size: 0.9rem; font-weight: 600; color: var(--red-light);">Total added: <span id="batch-count-val">0</span> students</div>
+              </div>
+
+              <!-- Cards grid -->
+              <div id="batch-students-list" class="batch-students-list">
+                <div class="no-results" style="grid-column: 1/-1; padding: 20px;">No students added to the batch yet.</div>
+              </div>
+
+              <div id="batch-submit-btn" style="display: none; border-top: 1px dashed var(--border-color); padding-top: 24px; text-align: right;">
+                <button class="btn btn-red" onclick="submitStudentBatch()">Submit Batch Registration</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- B. STAFF FORM CARD -->
+        <div id="staff-form-card" class="form-card">
+          <h3 style="font-size: 1.25rem; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">School/Office Staff ID Application</h3>
+          <form id="staff-form" onsubmit="handleStaffSubmit(event)">
+            <div class="form-group">
+              <label class="form-label" for="staff-school">Organization / School's Name *</label>
+              <input type="text" id="staff-school" class="form-input" placeholder="e.g. Simara Public School" required>
+            </div>
+            
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label" for="staff-name-en">Employee Name (in English) *</label>
+                <input type="text" id="staff-name-en" class="form-input" placeholder="e.g. Aayush Nepali" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="staff-name-np">Name in Nepali (Optional)</label>
+                <input type="text" id="staff-name-np" class="form-input" placeholder="e.g. आयुष नेपाली">
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label" for="staff-designation-en">Designation (in English) *</label>
+                <input type="text" id="staff-designation-en" class="form-input" placeholder="e.g. Assistant Teacher" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="staff-designation-np">Designation in Nepali (Optional)</label>
+                <input type="text" id="staff-designation-np" class="form-input" placeholder="e.g. सहायक शिक्षक">
+              </div>
+            </div>
+
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label class="form-label" for="staff-address-en">Permanent Address (in English) *</label>
+                <input type="text" id="staff-address-en" class="form-input" placeholder="e.g. Simara - 2, Bara" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="staff-blood">Blood Group</label>
+                <select id="staff-blood" class="form-input">
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                  <option value="Unknown">Unknown</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="staff-contact">Contact No *</label>
+                <input type="tel" id="staff-contact" class="form-input" placeholder="10-digit number" pattern="[0-9]{10}" required>
+              </div>
+            </div>
+
+            <!-- Single Photo Upload Area -->
+            <div class="form-group" style="margin-top: 15px;">
+              <label class="form-label">Upload Passport Size Photo *</label>
+              <div class="upload-container" onclick="triggerStaffPhotoUpload()">
+                <div id="staff-upload-inner" style="display: flex; flex-direction: column; align-items: center;">
+                  <div class="upload-icon">📷</div>
+                  <span class="upload-text">Drag and drop or Click to upload</span>
+                  <span class="upload-sub">Supports PNG, JPG, JPEG (Max 5MB)</span>
+                </div>
+                <div id="staff-preview-frame" class="upload-preview-frame">
+                  <img id="staff-preview-img" class="upload-preview-img" alt="Photo Preview">
+                </div>
+              </div>
+              <input type="file" id="staff-photo-input" class="hidden-file-input" accept="image/*" onchange="handleStaffPhotoSelect(event)">
+            </div>
+
+            <div style="margin-top: 30px; display: flex; justify-content: flex-end;">
+              <button type="submit" class="btn btn-red" id="btn-submit-staff">Submit Staff Application</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. TRACK ORDER / PHOTOS PAGE -->
+    <section id="photos-sec" class="section-padding">
+      <div class="container">
+        <div class="section-title-wrapper">
+          <span class="section-subtitle">Tracking Service</span>
+          <h2 class="section-title">Order & ID Card Tracker</h2>
+          <p class="section-desc">Enter your 10-digit contact number submitted during checkout or ID card registration to view order status, processing details, or download your ready-to-print photo files.</p>
+        </div>
+
+        <div class="tracking-card">
+          <form id="tracking-form" onsubmit="handleTrackingSubmit(event)">
+            <div class="form-group">
+              <label for="tracking-phone" class="form-label">Registered Contact Number</label>
+              <div style="display: flex; gap: 12px;">
+                <input type="tel" id="tracking-phone" class="form-input" placeholder="e.g. 9855024325" pattern="[0-9]{10}" required style="flex-grow: 1;">
+                <button type="submit" class="btn btn-primary" style="flex-shrink: 0;" id="btn-track-submit">Track Records</button>
+              </div>
+            </div>
+          </form>
+          
+          <!-- Sample Tip -->
+          <div style="margin-top: 16px; font-size: 0.75rem; color: var(--text-muted); text-align: center;">
+            💡 Quick Demo Tip: Enter <strong>9855024325</strong> or <strong>9845020025</strong> to view preloaded sample order lists!
+          </div>
+
+          <!-- Tracking Results Container -->
+          <div id="tracking-results-box" class="tracking-results">
+            <!-- A. Orders History Section -->
+            <div style="margin-bottom: 40px;">
+              <h3 class="result-section-title">Printing Orders History</h3>
+              <div id="tracking-orders-list" class="order-history-list">
+                <!-- Javascript populates -->
+              </div>
+            </div>
+
+            <!-- B. ID Cards & Photos Gallery -->
+            <div>
+              <h3 class="result-section-title">Approved ID Cards / Photos</h3>
+              <div id="tracking-photos-grid" class="track-photos-grid">
+                <!-- Javascript populates -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ABOUT US SECTION -->
+    <section id="about-sec" class="section-padding">
+      <div class="container">
+        <div class="section-title-wrapper">
+          <span class="section-subtitle">Who We Are</span>
+          <h2 class="section-title">About Chandeshwari Arts</h2>
+          <p class="section-desc">Serving institutions and individuals with high-grade digital banners, customized framing, photo studio sessions, and sublimation merchandise.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <h3>Crafting Memories & Professional Brands since 2012</h3>
+            <p>For over a decade, Chandeshwari Arts (चण्डेश्वरी डिजिटल & फ्लेक्स प्रिन्ट) has been a trusted printing partner in Nepal. Our printing lab is built to solve one constant problem: clients need extremely high-definition details, durable materials, and quick turnaround times under one roof.</p>
+            <p>We specialized initially in flex hoardings and passport-size studio photography. Over the years, we expanded into sublimation transfers (T-shirts, caps, keyrings, lanyards), high-lock acrylic ID holders, customized condolence/baby-birth frames, and self-ink corporate stamps.</p>
+            
+            <ul class="about-features-list">
+              <li class="about-feature-item">
+                <span class="about-feature-bullet">✔</span>
+                <div class="about-feature-text">
+                  <h4>Bulk Production Capabilities</h4>
+                  <p>Equipped with commercial high-speed digital lamination and sublimation transfer presses to print thousands of ID cards or badges in days.</p>
+                </div>
+              </li>
+              <li class="about-feature-item">
+                <span class="about-feature-bullet">✔</span>
+                <div class="about-feature-text">
+                  <h4>True Color Match Technology</h4>
+                  <p>Calibrated color spaces ensure that your institution's logo colors print accurately on lanyards, metal badges, and flex banners.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="about-image-showcase">
+            <img src="https://images.unsplash.com/photo-1516589091380-5d8e87df6999?w=500&q=80" alt="Printing and design studio workspace" style="width: 100%; border-radius: var(--radius-lg);">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. CONTACT US SECTION -->
+    <section id="contact-sec" class="section-padding">
+      <div class="container">
+        <div class="section-title-wrapper">
+          <span class="section-subtitle">Get In Touch</span>
+          <h2 class="section-title">Contact Our Printing Desk</h2>
+          <p class="section-desc">Have questions about pricing, bulk orders, or custom design templates? Drop us a message or visit our print shop directly.</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Info Column -->
+          <div class="contact-info-cards">
+            <div class="contact-info-card">
+              <div class="contact-info-icon-box">📍</div>
+              <div class="contact-info-details">
+                <h4>Our Print Shop Location</h4>
+                <p>Chandeshwari Arts & Flex Print<br>Simara, Nepal</p>
+              </div>
+            </div>
+            
+            <div class="contact-info-card">
+              <div class="contact-info-icon-box">📞</div>
+              <div class="contact-info-details">
+                <h4>Call or WhatsApp Us</h4>
+                <p>Phone: <a href="tel:+9779855024325">+977 985-5024325</a></p>
+                <p>WhatsApp: <a href="https://wa.me/9779855024325" target="_blank">+977 985-5024325</a></p>
+              </div>
+            </div>
+
+            <div class="contact-info-card">
+              <div class="contact-info-icon-box">✉</div>
+              <div class="contact-info-details">
+                <h4>Email Support</h4>
+                <p>Email: bk9845020025@gmail.com</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form Column -->
+          <div class="contact-form-card">
+            <h3 style="font-size: 1.25rem; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">Send a Direct Message</h3>
+            <form id="contact-form" onsubmit="handleContactSubmit(event)">
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="contact-name" class="form-label">Full Name *</label>
+                  <input type="text" id="contact-name" class="form-input" placeholder="e.g. Sujal Shrestha" required>
+                </div>
+                <div class="form-group">
+                  <label for="contact-email" class="form-label">Email Address *</label>
+                  <input type="email" id="contact-email" class="form-input" placeholder="e.g. bk9845020025@gmail.com" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="contact-subject" class="form-label">Subject *</label>
+                <input type="text" id="contact-subject" class="form-input" placeholder="e.g. Bulk School Lanyards Inquiry" required>
+              </div>
+              <div class="form-group">
+                <label for="contact-message" class="form-label">Message *</label>
+                <textarea id="contact-message" class="form-input" placeholder="Explain your custom sizes, quantities, and requirements here..." required style="min-height: 120px;"></textarea>
+              </div>
+              
+              <div style="text-align: right; margin-top: 24px;">
+                <button type="submit" class="btn btn-primary" id="btn-contact-submit">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                  Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h3>Chandeshwari Arts</h3>
+        <p>चण्डेश्वरी डिजिटल & फ्लेक्स प्रिन्ट – Dedicated to premium sublimation transfers, custom framing, bulk ID lanyards, and digital design services in Nepal.</p>
+        <div class="social-links">
+          <!-- TikTok Link -->
+          <a class="social-btn" href="https://www.tiktok.com/@chandeshwariphotography" target="_blank" aria-label="TikTok">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+            </svg>
+          </a>
+          <!-- Instagram Link -->
+          <a class="social-btn" href="https://instagram.com/chandeshwariarts" target="_blank" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"></path>
+            </svg>
+          </a>
+          <!-- YouTube Link -->
+          <a class="social-btn" href="https://www.youtube.com/channel/UCQCIP-ygDVPvImafzNrNbyw" target="_blank" aria-label="YouTube">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+              <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+            </svg>
+          </a>
+          <!-- Facebook Link -->
+          <a class="social-btn" href="https://www.facebook.com/Chandeshwariarts" target="_blank" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Online Services</h4>
+        <ul class="footer-links-list">
+          <li><a href="#id-form">Student ID Registration</a></li>
+          <li><a href="#id-form">Office Staff Portal</a></li>
+          <li><a href="#photos">Order Tracking</a></li>
+          <li><a href="students-sample.csv" download>Download CSV Sample</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Products</h4>
+        <ul class="footer-links-list">
+          <li><a href="#products">Custom T-Shirts</a></li>
+          <li><a href="#products">Photo Framing</a></li>
+          <li><a href="#products">Sublimation Mugs</a></li>
+          <li><a href="#products">Bulk Lanyards</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Contact Info</h4>
+        <ul class="footer-links-list" style="pointer-events: none;">
+          <li style="color: var(--text-primary); font-weight: 500;">📍 Simara, Nepal</li>
+          <li>📞 +977 985-5024325</li>
+          <li>✉ bk9845020025@gmail.com</li>
+          <li>🕒 Sun - Fri: 9:00 AM - 7:00 PM</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div class="footer-copy">
+        &copy; 2026 Chandeshwari Arts, Simara. All rights reserved.
+      </div>
+      <div class="footer-powered">
+        Recreated under branding request
+      </div>
+    </div>
+  </footer>
+
+  <!-- Web App Data & Scripts -->
+  <script src="products-data.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
